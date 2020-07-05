@@ -10,7 +10,14 @@ services:
     command: serve -s build -l 3000
     networks:
       - realworld-docker-network
-
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 50M
+        reservations:
+          cpus: '0.25'
+          memory: 20M  
   api:
     build: ./api
     container_name: realworld-docker-api
